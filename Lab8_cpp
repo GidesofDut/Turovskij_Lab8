@@ -1,0 +1,23 @@
+#include <iostream>
+#include <cstring>
+using namespace std;
+void removeDuplicates(char* str) {
+    if (str == nullptr)return;
+    bool seen[256] = {false};
+    int writeIndex = 0;
+    for (int readIndex =0; str[readIndex] != '\0'; ++readIndex) {
+        unsigned char currentChar = str[readIndex];
+        if (!seen[currentChar]) {
+            seen[currentChar]= true;
+            str[writeIndex++]= currentChar;
+        }
+    }
+    str[writeIndex] = '\0';
+}
+int main() {
+    char str[] = "fndhsudjfbshidfn874524";
+    cout <<"Initial line: " << str << endl;
+    removeDuplicates(str);
+    cout <<" No duplicates:" << str << endl;
+    return 0;
+}
